@@ -61,13 +61,13 @@ class Phrase {
   * @param {Object} e - Compares the text content of the users selection
   against the characters in the current phrase
   */
-  showMatchedLetter(e) {
+  showMatchedLetter(target) {
     if (this.checkLetter) {
       const letters = document.querySelectorAll("ul li");
       letters.forEach((letter) => {
         if (
-          letter.textContent === e.target.textContent ||
-          letter.textContent === e.key
+          letter.textContent === target.textContent ||
+          letter.textContent === target.key
         ) {
           letter.classList.remove("hide");
           letter.className = "show";

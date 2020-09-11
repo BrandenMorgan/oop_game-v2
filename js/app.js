@@ -14,12 +14,11 @@ const keys = document.getElementById("qwerty");
 keys.addEventListener("click", (e) => {
   // Only allows buttons to be clicked
   if (e.target.tagName === "BUTTON") {
-    newGame.handleInteraction(e);
+    newGame.handleInteraction(e.target);
   }
 });
-const phrase = document.getElementById("phrase");
+// find button element that contains the letter of the key that was pressed
 document.addEventListener("keyup", (e) => {
-  console.log(e.key);
-  console.log(e.target);
-  newGame.handleKeyUp(e);
+  // console.log(e.target.tagName);
+  newGame.handleInteraction(e.key);
 });
