@@ -58,17 +58,14 @@ class Phrase {
 
   /**
   * Reveals letter on the board that matches players selection
-  * @param {Object} e - Compares the text content of the users selection
+  * @param {element} target - Compares the text content of the users selection
   against the characters in the current phrase
   */
   showMatchedLetter(target) {
     if (this.checkLetter) {
       const letters = document.querySelectorAll("ul li");
       letters.forEach((letter) => {
-        if (
-          letter.textContent === target.textContent ||
-          letter.textContent === target.key
-        ) {
+        if (letter.textContent === target.textContent) {
           letter.classList.remove("hide");
           letter.className = "show";
         }

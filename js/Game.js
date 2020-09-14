@@ -27,6 +27,9 @@ class Game {
       keys[i].className = "key";
     }
 
+    // Reset lives
+    this.missed = 0;
+
     // Reset hearts
     const lives = document.getElementsByTagName("img");
     for (let i = 0; i < lives.length; i++) {
@@ -54,86 +57,58 @@ class Game {
 
   /**
    * Handles a lot of game logic
-   * @param {Object} e - The event object
+   * @param {element} target - The target of the user event.
    */
   handleInteraction(target) {
-    // Disable the selected letter’s onscreen keyboard button.
-    // target.disabled = true;
-
-    // Get current phrase
-    const phrase = this.activePhrase.phrase;
-
-    const onScreenKeys = document.getElementsByClassName("key");
-    for (let i = 0; i < onScreenKeys.length; i++) {
-      if (onScreenKeys[i].textContent === target) {
-        console.log(target);
-        onScreenKeys[i].disabled = true;
-        onScreenKeys[i].classList.add("chosen");
-        this.activePhrase.showMatchedLetter(onScreenKeys[i]);
-        this.checkforWin();
-        if (this.checkforWin()) {
-          this.gameOver();
-        }
-      }
-      if (!phrase.includes(target) && onScreenKeys[i].textContent === target) {
-        onScreenKeys[i].disabled = true;
-        onScreenKeys[i].classList.add("wrong");
-        this.removeLife();
-        if (this.missed === 5) {
-          this.gameOver();
-        }
-      }
-    }
-
-    // Check if the users selection matches any character of current phrase
-    if (!phrase.includes(target.textContent)) {
-      // If not change the class styles and remove a life
-      target.classList.add("wrong");
-      this.removeLife();
-      // If user guesses wrong 5 times game is over
-      if (this.missed === 5) {
-        this.gameOver();
-      }
-      /*
-        If guess is correct reveal matched letter, change class
-        styles and check for a win to end the game
-      */
+    /*
+      If the classList  of the button target has more than one class
+      exit the method early
+    */
+    if (target.classList.length > 1) {
+      return;
     } else {
-      target.classList.add("chosen");
-      this.activePhrase.showMatchedLetter(target);
-      this.checkforWin();
-      if (this.checkforWin()) {
-        this.gameOver();
+      // Get current phrase
+      const phrase = this.activePhrase.phrase;
+      // Get onscreen keys
+      const onScreenKeys = document.getElementsByClassName("key");
+
+      for (let i = 0; i < onScreenKeys.length; i++) {
+        /*
+          Check if the target matches the onscreen key. Disable the onscreen
+          key. Add styling to an onscreen key and show a letter that is
+          included in the current phrase. Then check to see if all letters have
+          been guessed.
+         */
+        if (onScreenKeys[i] === target) {
+          onScreenKeys[i].disabled = true;
+          onScreenKeys[i].classList.add("chosen");
+          this.activePhrase.showMatchedLetter(onScreenKeys[i]);
+          this.checkforWin();
+          if (this.checkforWin()) {
+            this.gameOver();
+          }
+        }
+        /*
+          If the current phrase does not include the targets text and
+          the onscreen key matches the target add styling to the
+          onscreen key indicating it was incorrect. Remove a life and
+          check if there are any chances left.
+        */
+        if (
+          !phrase.includes(target.textContent) &&
+          onScreenKeys[i] === target
+        ) {
+          onScreenKeys[i].disabled = true;
+          onScreenKeys[i].classList.add("wrong");
+          this.removeLife();
+          if (this.missed === 5) {
+            this.gameOver();
+          }
+        }
       }
     }
   }
 
-  // handleKeyUp(e) {
-  //   const onScreenKeys = document.getElementsByClassName("key");
-  //   // Get current phrase
-  //   const phrase = this.activePhrase.phrase;
-  //   if (!phrase.includes(e.key)) {
-  //     // If not change the class styles and remove a life
-  //     // e.target.classList.add("wrong");
-  //     this.removeLife();
-  //     for (let i = 0; i < onScreenKeys.length; i++) {
-  //       if (!phrase.includes(onScreenKeys[i].textContent)) {
-  //         onScreenKeys[i].classList.add("wrong");
-  //         console.log(onScreenKeys[i]);
-  //       }
-  //     }
-  //
-  //     // If user guesses wrong 5 times game is over
-  //     if (this.missed === 5) {
-  //       this.gameOver();
-  //     }
-  //   } else {
-  //     this.activePhrase.showMatchedLetter(e);
-  //     if (this.checkforWin()) {
-  //       this.gameOver();
-  //     }
-  //   }
-  // }
   /*
     If the phrase does not include the guessed letter,
     add the wrong CSS class to the selected letter's

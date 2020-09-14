@@ -19,6 +19,21 @@ keys.addEventListener("click", (e) => {
 });
 // find button element that contains the letter of the key that was pressed
 document.addEventListener("keyup", (e) => {
-  // console.log(e.target.tagName);
-  newGame.handleInteraction(e.key);
+  let matchedButton;
+  // Get onscreen button elements
+  const buttons = document.getElementsByClassName("key");
+
+  for (let i = 0; i < buttons.length; i++) {
+    /*
+      If the current button elements text matches the key that was
+      pressed by the user, store it to matchedButton and exit the loop
+    */
+    if (buttons[i].textContent === e.key) {
+      matchedButton = buttons[i];
+      break;
+    }
+  }
+  if (matchedButton) {
+    newGame.handleInteraction(matchedButton);
+  }
 });
