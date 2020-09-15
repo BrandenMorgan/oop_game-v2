@@ -41,8 +41,7 @@ class Game {
     startScreen.style.display = "none";
 
     // Get a new active phrase and display it to the screen
-    const phrase = this.getRandomPhrase();
-    this.activePhrase = phrase;
+    this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
   }
 

@@ -17,7 +17,7 @@ keys.addEventListener("click", (e) => {
     newGame.handleInteraction(e.target);
   }
 });
-// find button element that contains the letter of the key that was pressed
+// Find button element that contains the letter of the key that was pressed
 document.addEventListener("keyup", (e) => {
   let matchedButton;
   // Get onscreen button elements

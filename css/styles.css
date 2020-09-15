@@ -1,5 +1,5 @@
 /* Main styles */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 /* Variables */
 
@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Press Start 2P", cursive;
 }
 
 body {
@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: url(https://thumbs.gfycat.com/OddTartHorsefly-size_restricted.gif);
 }
 
 li,
@@ -35,12 +36,6 @@ ol,
 ul {
   padding: 0;
   display: inline-block;
-}
-
-.start img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 h2 {
@@ -116,7 +111,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #3a3f58;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -142,7 +137,7 @@ button {
 }
 
 .wrong {
-  background: #f7a964;
+  background: #d73a3a;
   color: #ffffff;
 }
 
@@ -178,12 +173,12 @@ button {
   border-radius: 5px;
 }
 
-.title {
+.title,
+.header {
   color: #d73a3a;
 }
 
 .start {
-  background-color: black;
   background-image: url(https://i.ytimg.com/vi/5ebenCSjxZY/maxresdefault.jpg);
 }
 

@@ -36,7 +36,8 @@ class Phrase {
         li.className = `hide letter ${character}`;
         li.textContent = `${character}`;
         /*
-        If it is an empty string add 'space' class and an empty string for text content
+        If it is an empty string add 'space' class and an empty string
+        for text content
       */
       } else {
         li.className = "space";
@@ -47,7 +48,8 @@ class Phrase {
   }
 
   /**
-  * Checks to see if the letter selected by the player matches a letter in the phrase.
+  * Checks to see if the letter selected by the player matches a
+  letter in the phrase.
   * @param {Object} e - Event targets text content
   * @return {boolean} Boolean value indicating whether the text of the clicked
   target is included in the current phrase
