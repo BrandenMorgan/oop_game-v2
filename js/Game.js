@@ -82,8 +82,8 @@ class Game {
           onScreenKeys[i].disabled = true;
           onScreenKeys[i].classList.add("chosen");
           this.activePhrase.showMatchedLetter(onScreenKeys[i]);
-          this.checkforWin();
-          if (this.checkforWin()) {
+          this.checkForWin();
+          if (this.checkForWin()) {
             this.gameOver();
           }
         }
@@ -127,7 +127,7 @@ class Game {
   * @return {boolean} Boolean value indicating whether the game has
   been won (true) or not (false)
   */
-  checkforWin() {
+  checkForWin() {
     let win;
     const hiddenPhrase = document.querySelectorAll(".hide");
     if (hiddenPhrase.length === 0) {
@@ -147,7 +147,8 @@ class Game {
     startScreen.style.display = "block";
     const gameOverMessage = document.getElementById("game-over-message");
     gameOverMessage.classList.remove("start");
-    if (this.checkforWin()) {
+    if (this.checkForWin()) {
+      gameOverMessage.classList.remove("lose");
       gameOverMessage.classList.add("win");
       gameOverMessage.textContent = "Congratulations! You Win!";
     } else {

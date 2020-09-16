@@ -3,9 +3,10 @@
  * app.js */
 
 // Event listener for start button
-const newGame = new Game();
+let newGame;
 const startButton = document.getElementById("btn__reset");
 startButton.addEventListener("click", (e) => {
+  newGame = new Game();
   newGame.startGame();
 });
 
@@ -13,6 +14,7 @@ startButton.addEventListener("click", (e) => {
 const keys = document.getElementById("qwerty");
 keys.addEventListener("click", (e) => {
   // Only allows buttons to be clicked
+
   if (e.target.tagName === "BUTTON") {
     newGame.handleInteraction(e.target);
   }
@@ -20,6 +22,7 @@ keys.addEventListener("click", (e) => {
 // Find button element that contains the letter of the key that was pressed
 document.addEventListener("keyup", (e) => {
   let matchedButton;
+
   // Get onscreen button elements
   const buttons = document.getElementsByClassName("key");
 
